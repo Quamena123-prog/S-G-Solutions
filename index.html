@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&G Solutions - Business Structuring & Advisory</title>
+    <meta name="description" content="Turn ideas into clarity, structure, and direction. We help entrepreneurs and SMEs build sustainable, scalable businesses through strategic advisory.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF7A3D;
+            --primary-dark: #E56B2F;
+            --secondary: #1F2937;
+            --light-bg: #F9FAFB;
+            --white: #FFFFFF;
+            --text-dark: #111827;
+            --text-light: #6B7280;
+            --border: #E5E7EB;
+            --accent: #F3F4F6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 122, 61, 0.25);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            padding: 0.75rem 1.75rem;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-shape {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(255, 122, 61, 0.1) 0%, rgba(255, 122, 61, 0.05) 100%);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 122, 61, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .shape-inner {
+            width: 90%;
+            height: 90%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            background: var(--accent);
+            padding: 3rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-content h3 {
+            font-size: 1.375rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .belief-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .belief-list li {
+            padding: 1rem;
+            background: var(--accent);
+            margin-bottom: 0.75rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .belief-list strong {
+            color: var(--primary);
+        }
+
+        .about-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .about-card {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .about-card h4 {
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .about-card p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 0;
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 12px 32px rgba(255, 122, 61, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .service-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 122, 61, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== APPROACH SECTION ===== */
+        .approach {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .approach-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .approach-title h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .approach-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            position: relative;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .step h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .step p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ===== WHO WE WORK WITH ===== */
+        .work-with {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .work-with-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--white) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .work-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .work-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .work-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta {
+            background: linear-gradient(135deg, var(--secondary) 0%, #374151 100%);
+            color: white;
+            padding: 4rem 2rem;
+            margin: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--primary);
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-light:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+
+            nav {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem 2rem;
+            }
+
+            .about-grid,
+            .approach-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .cta h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">S</div>
+                <span>S&G Solutions</span>
+            </a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#approach">Approach</a>
+                <a href="#contact">Contact</a>
+                <button class="btn-primary">Get Started</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Turn Ideas Into <span class="highlight">Clarity, Structure & Direction</span></h1>
+            <p>We help entrepreneurs and SMEs move from confusion to sustainable growth by transforming ideas into structured, executable systems.</p>
+            <div class="hero-cta">
+                <button class="btn-primary">Book a Clarity Session</button>
+                <button class="btn-secondary">Learn More</button>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin: 0;">Join 100+ businesses that have found clarity through structured advisory</p>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-shape">
+                <div class="shape-inner">S&G</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Businesses Advised</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Core Service Lines</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5+ yrs</div>
+                <div class="stat-label">Industry Experience</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <h2 class="section-title">Why We Exist</h2>
+        <p class="section-subtitle">Most businesses don't fail because of bad ideas. They fail because great ideas lack structure, clarity, and execution.</p>
+        
+        <div class="about-grid">
+            <div class="about-content">
+                <h3>The Problem We Solve</h3>
+                <p>Entrepreneurs often start with brilliant ideas but operate without clear systems, financial logic, or defined strategy. Many never even launch because they feel lost or assume they need capital first.</p>
+                
+                <h3>Our Philosophy</h3>
+                <ul class="belief-list">
+                    <li><strong>Clarity</strong> is the foundation of every successful business</li>
+                    <li><strong>Structure</strong> determines sustainability</li>
+                    <li><strong>Direction</strong> is more important than speed</li>
+                </ul>
+
+                <p>We don't overcomplicate business. We simplify it, structure it, and make it executable with the resources you have today.</p>
+            </div>
+
+            <div class="about-visual">
+                <div class="about-card">
+                    <h4>Our Focus</h4>
+                    <p>Clarity before complexity</p>
+                </div>
+                <div class="about-card">
+                    <h4>Our Focus</h4>
+                    <p>Structure before scale</p>
+                </div>
+                <div class="about-card">
+                    <h4>Our Focus</h4>
+                    <p>Direction before expansion</p>
+                </div>
+                <div class="about-card">
+                    <h4>Our Difference</h4>
+                    <p>We build structure with you, not just advise</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Structured advisory to move you from ideas to execution</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💡</div>
+                <h3>Idea Structuring</h3>
+                <p>Turn raw ideas into clear, workable business concepts by defining the problem, customer, solution, and business direction.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Business Structuring</h3>
+                <p>Organize informal or unclear businesses into structured systems with defined roles, operations, and decision flows.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Business Model Development</h3>
+                <p>Define how your business works through value creation, revenue logic, customer flow, and sustainability structure.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Strategy Development</h3>
+                <p>Chart your growth path with clear market focus, positioning, and execution priorities aligned to your vision.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💰</div>
+                <h3>Financial Structuring & Planning</h3>
+                <p>Bring clarity to your numbers with cost structure, pricing logic, revenue frameworks, and realistic projections.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>Business Diagnostics</h3>
+                <p>Analyze your business to identify structure issues, operational gaps, financial blind spots, and execution problems.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">▶️</div>
+                <h3>Execution Support</h3>
+                <p>Break everything down into actionable steps with practical guidance and simplified implementation planning.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPROACH SECTION -->
+    <section class="approach" id="approach">
+        <div class="approach-title">
+            <h2>Our Approach</h2>
+            <p class="section-subtitle">A simple, proven framework that works</p>
+        </div>
+
+        <div class="approach-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Clarity</h3>
+                <p>We help you understand your business or idea clearly. What works? What doesn't? Where are the gaps?</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Structure</h3>
+                <p>We build systems and frameworks that make your business operational, organized, and scalable.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Execution</h3>
+                <p>We turn strategy into action with step-by-step plans that move you forward with confidence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO WE WORK WITH -->
+    <section class="work-with">
+        <h2 class="section-title">Who We Work With</h2>
+        <p class="section-subtitle">We specialize in early-stage and growing businesses</p>
+
+        <div class="work-with-grid">
+            <div class="work-card">
+                <div class="work-card-icon">🚀</div>
+                <h3>Early-Stage Entrepreneurs</h3>
+                <p>Those with ideas but unsure how to structure them into viable businesses</p>
+            </div>
+
+            <div class="work-card">
+                <div class="work-card-icon">🏢</div>
+                <h3>Young SMEs (0-5 years)</h3>
+                <p>Small business owners navigating growth without clear systems</p>
+            </div>
+
+            <div class="work-card">
+                <div class="work-card-icon">📈</div>
+                <h3>Informal Businesses</h3>
+                <p>Operating informally and ready to move toward structure and sustainability</p>
+            </div>
+
+            <div class="work-card">
+                <div class="work-card-icon">🤔</div>
+                <h3>Stuck Entrepreneurs</h3>
+                <p>Facing funding, execution, or growth decisions and needing strategic clarity</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Ready to Build Your Business with Clarity?</h2>
+            <p>Let's start with a clarity session. We'll help you see your business clearly, identify what needs to change, and outline your next steps.</p>
+            <div class="cta-buttons">
+                <button class="btn-primary">Book a Clarity Session</button>
+                <button class="btn-light">Schedule a Call</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-brand-logo">
+                    <div class="logo-icon" style="width: 40px; height: 40px; background: var(--primary);">S</div>
+                    <span style="font-weight: 700;">S&G Solutions</span>
+                </div>
+                <p>We help entrepreneurs and SMEs turn ideas into clarity, structure, and direction for sustainable growth.</p>
+                <div class="social-links">
+                    <a href="#" title="Twitter">𝕏</a>
+                    <a href="#" title="LinkedIn">in</a>
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">📷</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#approach">Our Approach</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Idea Structuring</a></li>
+                    <li><a href="#">Business Structuring</a></li>
+                    <li><a href="#">Financial Planning</a></li>
+                    <li><a href="#">Execution Support</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Get In Touch</h4>
+                <ul>
+                    <li><a href="mailto:hello@sgslutions.com">hello@sgsolutions.com</a></li>
+                    <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                    <li style="margin-top: 1rem; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Available for consultations Monday-Friday, 9AM-6PM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 S&G Solutions. All rights reserved. | <a href="#" style="color: var(--primary);">Privacy Policy</a> | <a href="#" style="color: var(--primary);">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth active nav link
+        const navLinks = document.querySelectorAll('nav a');
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY + 100;
+            navLinks.forEach(link => link.classList.remove('active'));
+            if (scrollPosition < 500) {
+                navLinks[0].classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

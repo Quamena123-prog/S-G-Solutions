@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - S&G Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF7A3D;
+            --primary-dark: #E56B2F;
+            --secondary: #1F2937;
+            --light-bg: #F9FAFB;
+            --white: #FFFFFF;
+            --text-dark: #111827;
+            --text-light: #6B7280;
+            --border: #E5E7EB;
+            --accent: #F3F4F6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+        }
+
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .page-hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .page-hero p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .service-detail {
+            margin-bottom: 4rem;
+        }
+
+        .service-detail-header {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            align-items: start;
+            margin-bottom: 2rem;
+        }
+
+        .service-detail-icon {
+            font-size: 3rem;
+        }
+
+        .service-detail h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .service-detail-intro {
+            color: var(--text-light);
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-what {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .service-what h3 {
+            color: var(--primary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .service-what ul {
+            list-style: none;
+            columns: 2;
+            column-gap: 2rem;
+        }
+
+        .service-what li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-what li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .service-how {
+            margin-top: 3rem;
+        }
+
+        .service-how h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .step-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .step-item {
+            padding: 1.5rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            gap: 1.5rem;
+        }
+
+        .step-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 122, 61, 0.1);
+            border-radius: 50%;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .step-content h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, var(--secondary) 0%, #374151 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 4rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .service-what ul {
+                columns: 1;
+            }
+
+            .service-detail-header {
+                grid-template-columns: 1fr;
+            }
+
+            .service-detail-icon {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">S</div>
+                <span>S&G Solutions</span>
+            </a>
+            <nav>
+                <a href="index.html#about">About</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#approach">Approach</a>
+                <a href="#contact">Contact</a>
+                <button class="btn-primary">Get Started</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <h1>Our Services</h1>
+        <p>Comprehensive advisory services to move your business from ideas to execution</p>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <!-- Idea Structuring -->
+            <div class="service-detail">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon">💡</div>
+                    <div>
+                        <h2>Idea Structuring</h2>
+                        <p class="service-detail-intro">Turn raw ideas into clear, workable business concepts</p>
+                    </div>
+                </div>
+
+                <div class="service-what">
+                    <h3>What We Define</h3>
+                    <ul>
+                        <li>The problem your business solves</li>
+                        <li>Your target customer</li>
+                        <li>Your core solution</li>
+                        <li>Business direction & viability</li>
+                        <li>Initial market fit assessment</li>
+                        <li>Resource requirements</li>
+                    </ul>
+                </div>
+
+                <div class="service-how">
+                    <h3>Our Process</h3>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <h4>Deep Exploration</h4>
+                                <p>We understand your idea thoroughly through structured conversations</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <h4>Problem & Solution Mapping</h4>
+                                <p>Define the problem clearly and validate your solution approach</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <h4>Business Concept Development</h4>
+                                <p>Create a clear concept document outlining your business</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <h4>Viability Assessment</h4>
+                                <p>Identify feasibility, risks, and next steps for execution</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-card">
+                    <h3>Ready to Structure Your Idea?</h3>
+                    <p>Let's take your concept from confusion to clarity</p>
+                    <button class="btn-primary">Book a Session</button>
+                </div>
+            </div>
+
+            <!-- Business Structuring -->
+            <div class="service-detail">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon">🏗️</div>
+                    <div>
+                        <h2>Business Structuring</h2>
+                        <p class="service-detail-intro">Organize informal businesses into structured systems</p>
+                    </div>
+                </div>
+
+                <div class="service-what">
+                    <h3>What We Build</h3>
+                    <ul>
+                        <li>Clear roles and responsibilities</li>
+                        <li>Operational workflows</li>
+                        <li>Decision-making frameworks</li>
+                        <li>Internal reporting systems</li>
+                        <li>Process documentation</li>
+                        <li>Governance structure</li>
+                    </ul>
+                </div>
+
+                <div class="service-how">
+                    <h3>Our Process</h3>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <h4>Current State Assessment</h4>
+                                <p>Map your existing operations and identify structural gaps</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <h4>Role Definition</h4>
+                                <p>Clarify responsibilities and reporting lines</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <h4>Process Design</h4>
+                                <p>Build efficient workflows and standard operating procedures</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <h4>Documentation & Rollout</h4>
+                                <p>Create structured documentation and implement systems</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-card">
+                    <h3>Transform Your Operations</h3>
+                    <p>Move from informal to structured with confidence</p>
+                    <button class="btn-primary">Start Structuring</button>
+                </div>
+            </div>
+
+            <!-- Business Model Development -->
+            <div class="service-detail">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon">📊</div>
+                    <div>
+                        <h2>Business Model Development</h2>
+                        <p class="service-detail-intro">Define how your business creates, delivers, and captures value</p>
+                    </div>
+                </div>
+
+                <div class="service-what">
+                    <h3>What We Define</h3>
+                    <ul>
+                        <li>Value creation mechanism</li>
+                        <li>Revenue streams & logic</li>
+                        <li>Customer acquisition flow</li>
+                        <li>Cost structure</li>
+                        <li>Key partnerships</li>
+                        <li>Sustainability framework</li>
+                    </ul>
+                </div>
+
+                <div class="service-how">
+                    <h3>Our Process</h3>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <h4>Model Exploration</h4>
+                                <p>Understand how your business currently works</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <h4>Canvas Development</h4>
+                                <p>Create a visual business model canvas</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <h4>Validation & Testing</h4>
+                                <p>Validate assumptions and test model viability</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <h4>Optimization</h4>
+                                <p>Refine the model for maximum efficiency</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-card">
+                    <h3>Define Your Business Model</h3>
+                    <p>Create clarity around how you create value</p>
+                    <button class="btn-primary">Develop Model</button>
+                </div>
+            </div>
+
+            <!-- Strategy Development -->
+            <div class="service-detail">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon">🎯</div>
+                    <div>
+                        <h2>Strategy Development</h2>
+                        <p class="service-detail-intro">Chart your path to growth with clear direction</p>
+                    </div>
+                </div>
+
+                <div class="service-what">
+                    <h3>What We Build</h3>
+                    <ul>
+                        <li>Growth roadmap & timeline</li>
+                        <li>Market positioning</li>
+                        <li>Competitive advantage</li>
+                        <li>Execution priorities</li>
+                        <li>Success metrics</li>
+                        <li>Risk mitigation strategies</li>
+                    </ul>
+                </div>
+
+                <div class="service-how">
+                    <h3>Our Process</h3>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <h4>Market Analysis</h4>
+                                <p>Understand your market, competition, and opportunities</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <h4>Strategic Positioning</h4>
+                                <p>Define your unique position and competitive advantage</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <h4>Roadmap Creation</h4>
+                                <p>Build a realistic, phased growth roadmap</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <h4>Implementation Planning</h4>
+                                <p>Create actionable plans for each phase</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-card">
+                    <h3>Build Your Strategy</h3>
+                    <p>Move from uncertainty to clear direction</p>
+                    <button class="btn-primary">Plan Strategy</button>
+                </div>
+            </div>
+
+            <!-- Financial Structuring & Planning -->
+            <div class="service-detail">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon">💰</div>
+                    <div>
+                        <h2>Financial Structuring & Planning</h2>
+                        <p class="service-detail-intro">Bring clarity to your numbers and projections</p>
+                    </div>
+                </div>
+
+                <div class="service-what">
+                    <h3>What We Build</h3>
+                    <ul>
+                        <li>Cost structure clarity</li>
+                        <li>Pricing strategy & logic</li>
+                        <li>Revenue framework</li>
+                        <li>Financial projections</li>
+                        <li>Cash flow planning</li>
+                        <li>Break-even analysis</li>
+                    </ul>
+                </div>
+
+                <div class="service-how">
+                    <h3>Our Process</h3>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <h4>Cost Analysis</h4>
+                                <p>Map all costs and identify cost drivers</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <h4>Pricing Strategy</h4>
+                                <p>Develop pricing logic aligned to value</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <h4>Financial Modeling</h4>
+                                <p>Create realistic financial projections</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <h4>Planning & Monitoring</h4>
+                                <p>Build financial planning framework and KPIs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-card">
+                    <h3>Master Your Finances</h3>
+                    <p>Build confidence in your numbers</p>
+                    <button class="btn-primary">Plan Financials</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>S&G Solutions</h4>
+                <p>We help entrepreneurs and SMEs turn ideas into clarity, structure, and direction.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:hello@sgsolutions.com">hello@sgsolutions.com</a></li>
+                    <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 S&G Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
