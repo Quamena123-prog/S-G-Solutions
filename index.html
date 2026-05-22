@@ -151,6 +151,64 @@
             box-shadow: 0 10px 15px -3px rgba(255, 122, 61, 0.3), 0 4px 6px -2px rgba(255, 122, 61, 0.1);
         }
 
+        /* ===== HAMBURGER MENU ===== */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--text-dark);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 1000;
+            padding: 2rem;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-family: 'Outfit';
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
         /* ===== HERO SECTION ===== */
         .hero {
             max-width: 1400px;
@@ -297,8 +355,8 @@
         /* ===== ANIMATIONS ===== */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
             will-change: transform, opacity;
         }
 
@@ -306,6 +364,29 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .reveal-stagger > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal-stagger.active > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered delays for up to 10 items */
+        .reveal-stagger.active > *:nth-child(1) { transition-delay: 0.1s; }
+        .reveal-stagger.active > *:nth-child(2) { transition-delay: 0.2s; }
+        .reveal-stagger.active > *:nth-child(3) { transition-delay: 0.3s; }
+        .reveal-stagger.active > *:nth-child(4) { transition-delay: 0.4s; }
+        .reveal-stagger.active > *:nth-child(5) { transition-delay: 0.5s; }
+        .reveal-stagger.active > *:nth-child(6) { transition-delay: 0.6s; }
+        .reveal-stagger.active > *:nth-child(7) { transition-delay: 0.7s; }
+        .reveal-stagger.active > *:nth-child(8) { transition-delay: 0.8s; }
+        .reveal-stagger.active > *:nth-child(9) { transition-delay: 0.9s; }
+        .reveal-stagger.active > *:nth-child(10) { transition-delay: 1.0s; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -748,43 +829,114 @@
         }
 
         @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            header nav {
+                display: none;
+            }
+
             .header-content {
-                flex-wrap: wrap;
+                padding: 1rem 1.5rem;
             }
 
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            nav {
-                gap: 1.5rem;
-            }
-
-            nav a {
-                font-size: 0.85rem;
+            .logo {
+                font-size: 1.25rem;
             }
 
             .hero {
                 grid-template-columns: 1fr;
-                padding: 2rem 2rem;
-            }
-
-            .about-grid,
-            .approach-steps {
-                grid-template-columns: 1fr;
+                padding: 3rem 1.5rem;
+                gap: 3rem;
+                text-align: center;
             }
 
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: 2.25rem;
+            }
+
+            .hero-cta {
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .stats {
+                padding: 3rem 1.5rem;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .stat-number {
+                font-size: 2.75rem;
+            }
+
+            .about {
+                padding: 4rem 1.5rem;
             }
 
             .section-title {
-                font-size: 1.75rem;
+                font-size: 2.25rem;
+                text-align: center;
+            }
+
+            .section-subtitle {
+                font-size: 1.1rem;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-visual {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .approach-steps {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .work-with-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta {
+                padding: 4rem 1.5rem;
+                margin: 2rem 1.5rem;
             }
 
             .cta h2 {
-                font-size: 1.75rem;
+                font-size: 2.25rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .footer-brand, .footer-brand-logo {
+                align-items: center;
             }
         }
     </style>
@@ -803,8 +955,21 @@
                 <a href="#contact">Contact</a>
                 <a href="#contact" class="btn-primary" style="text-decoration: none;">Get Started</a>
             </nav>
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
+
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="services.html" onclick="toggleMenu()">Services</a>
+        <a href="#approach" onclick="toggleMenu()">Approach</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
+        <a href="#contact" class="btn-primary" style="text-decoration: none;" onclick="toggleMenu()">Get Started</a>
+    </div>
 
     <!-- HERO SECTION -->
     <section class="hero">
@@ -871,7 +1036,7 @@
                 <p>We don't overcomplicate business. We simplify it, structure it, and make it executable with the resources you have today.</p>
             </div>
 
-            <div class="about-visual">
+            <div class="about-visual reveal-stagger">
                 <div class="about-card">
                     <h4>Our Focus</h4>
                     <p>Clarity before complexity</p>
@@ -896,7 +1061,7 @@
         <h2 class="section-title">Our Services</h2>
         <p class="section-subtitle">Structured advisory to move you from ideas to execution | <a href="services.html" style="color: var(--primary); font-weight: 600;">View Detailed Services →</a></p>
 
-        <div class="services-grid">
+        <div class="services-grid reveal-stagger">
             <div class="service-card">
                 <div class="service-icon">💡</div>
                 <h3>Idea Structuring</h3>
@@ -948,7 +1113,7 @@
             <p class="section-subtitle">A simple, proven framework that works</p>
         </div>
 
-        <div class="approach-steps">
+        <div class="approach-steps reveal-stagger">
             <div class="step">
                 <div class="step-number">1</div>
                 <h3>Clarity</h3>
@@ -974,7 +1139,7 @@
         <h2 class="section-title">Who We Work With</h2>
         <p class="section-subtitle">We specialize in early-stage and growing businesses</p>
 
-        <div class="work-with-grid">
+        <div class="work-with-grid reveal-stagger">
             <div class="work-card">
                 <div class="work-card-icon">🚀</div>
                 <h3>Early-Stage Entrepreneurs</h3>
@@ -1079,7 +1244,19 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        function toggleMenu() {
+            menuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
     </script>
 </body>
 </html>
