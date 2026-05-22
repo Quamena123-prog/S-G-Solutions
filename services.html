@@ -59,7 +59,7 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 1100; /* Increased to stay above mobile-nav */
         }
 
         .header-content {
@@ -149,7 +149,7 @@
             width: 28px;
             height: 2px;
             background: var(--text-dark);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border-radius: 2px;
         }
 
@@ -184,12 +184,15 @@
 
         .mobile-menu-btn.active span:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
+            background: var(--primary);
         }
         .mobile-menu-btn.active span:nth-child(2) {
             opacity: 0;
+            transform: translateX(20px);
         }
         .mobile-menu-btn.active span:nth-child(3) {
             transform: translateY(-8px) rotate(-45deg);
+            background: var(--primary);
         }
 
         .page-hero {
